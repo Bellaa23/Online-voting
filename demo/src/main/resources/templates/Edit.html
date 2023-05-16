@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update page</title>
+    <style>
+        * {
+            margin: 0;
+            border: 0;
+            padding: 0;
+            font-family: 'Questrial', sans-serif;
+        }
+        body {
+            background-image: url(images/sergey-zolkin-_UeY8aTI6d0-unsplash.jpg);
+            background-size: cover;
+
+        }
+        h1 {
+            color: white;
+            text-align: center;
+            margin-top: 300px;
+        }
+        h1.member {
+            margin-top: 45px;
+        }
+        .container {
+            background-color: rgba(255,255,255,.5);
+            width: 400px;
+            height: 570px;
+            text-align: center;
+            margin: 0 auto;
+            padding: 15px;
+            margin-top: 30px;
+            border-radius: 10px;
+
+        }
+
+        header{
+            display:flex;
+            justify-content: space-between;
+            color: white;
+            background: rgba(0,0,0,0.2)
+        }
+
+        header div{
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: Pacifico;
+            margin: 0 2rem;
+        }
+
+        header div i{
+            font-size: 8rem;
+            margin: 1rem;
+        }
+
+        header p{
+            font-size: 30px;
+            color: coral;
+        }
+        header nav{
+            padding: 1rem 2rem;
+        }
+
+        nav ul li{
+            list-style: none;
+            display: inline;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 5px;
+        }
+
+        nav li a{
+            padding: 1rem;
+            margin: 1rem;
+            text-decoration: none;
+            color: white;
+            transition: all 250ms ease-in;
+        }
+
+        nav li a:hover{
+            background: rgba(255,255,255,.3);
+            color: #0492C2;
+        }
+
+        .textbox
+        {
+            width: 75%;
+            height: 35px;
+            padding: 1px;
+            padding-left: 20px;
+            color: black;
+            font-size: 15px;
+            font-family: century gothic;
+            border: none;
+            border-radius: 10px;
+            background: whitesmoke;
+            box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
+        }
+        input[type=text], input[type=password], input[type=email], input[type=date], input[type=color] {
+            box-sizing: border-box;
+            width: 300px;
+            height: 45px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            margin-top: 15px;
+            background-image: url("https://res.cloudinary.com/mamo/image/upload/c_scale,w_40/v1475961978/Contacts-Filled-50_qrzhh1.png");
+            background-repeat: no-repeat;
+            padding: 12px 20px 12px 60px;
+            color: black;
+        }
+        ::placeholder
+        {
+            color: black;
+        }
+
+        input[type=email] {
+            background-image: url("https://res.cloudinary.com/mamo/image/upload/c_scale,w_40/v1476033159/Gmail-Login-Filled-50_tywgz0.png");
+            background-position: 5px;
+        }
+        input[type=date] {
+            background-image: url("https://res.cloudinary.com/mamo/image/upload/c_scale,w_40/v1476033159/Birthday-Cake-Filled-50_pbfbgl.png");
+            background-position: 5px;
+        }
+
+        input[type=button], input[type=submit], input[type=reset] {
+            background-color: #0492C2;
+            color: white;
+            padding: 10px 15px;
+            cursor: pointer;
+            width: 148px;
+            height: 45px;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        input[type=submit]:hover{
+            background-color: #1f456e;
+        }
+
+        select {
+            width: 100px;*
+            height: 60px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            margin-top: 15px;
+
+        }
+        input[type="checkbox"] {
+            margin-bottom: 25px;
+        }
+        .register
+        {
+            width: 200px;
+            height: 45px;
+            margin-top: 25px;
+            font-size: 30px;
+            font-family: century gothic;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            background-color: #0DF6E3;
+            box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
+        }
+
+        @media screen and (max-width: 480px) {
+            h1 {
+                margin-top: 30px;
+            }
+            .container {
+                width: 90%;
+                padding: 0 5%;
+
+
+            }
+        }
+        @media screen and (max-width: 332px) {
+            .container {
+                height: auto;
+                background-color: rgba(255, 255, 255, 0.4);
+            }
+            input[type=text], input[type=password], input[type=email], input[type=date], input[type=color], select {
+                width: 275px;
+                height: auto;
+            }
+            input[type=button], input[type=submit], input[type=reset] {
+                width: 150px;
+                height: 30px;
+            }
+            input[type=checkbox] {
+                line-height: -50px;
+            }
+            input[type=color] {
+                height: 40px;
+            }
+            p {
+                line-height: 1px;
+            }
+
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="atom">
+        <i class="fas fa-atom"></i>
+        <img src="images/eballot-logo.png" class="logo" width="200px", height="60px">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="/personal">Home</a></li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="/index">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+<!--<h1 class="member">Vote Now !</h1>-->
+<div class="container" >
+    <form th:action="@{/voting}" th:object="${vote}"  method="post" >
+        <input class="textbox" type="hidden" th:field="*{id}" name="voter_id" placeholder="Voter ID" required="">
+        <input class="textbox" type="text" th:field="*{voter_id}" name="voter_id" placeholder="Voter ID" required="">
+        <input class="textbox" type="text" th:field="*{name}" name="Name" placeholder="Names" required="">
+        <input class="textbox" type="email" th:field="*{email}" name="email" placeholder="Email address" required="">
+        <select class="textbox" th:field="*{gender}" name="gender" required="">
+            <option value="Gender">Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <input class="textbox" type="text" th:field="*{date}" placeholder="Date of Birth" name="date" required="">
+        <input class="textbox" type="text" th:field="*{address}" name="address" placeholder="Address" required="">
+        <select class="textbox" th:field="*{candidates}" name="candidates" required="">
+            <option value="candidate">Candidates</option>
+            <option value="RPF">RPF</option>
+            <option value="Greenparty">Green Party</option>
+            <option value="psd">PSD</option>
+            <option value="pl">PL</option>
+        </select>
+        <input class="register" type="submit" name="submit" value="Update">
+    </form>
+</div>
+</body>
+</html>

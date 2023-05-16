@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="html://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/voting.css">
+    <link rel="stylesheet" href="css/style1.css">
+    <title>Voting page</title>
+</head>
+<body>
+<header>
+    <div class="atom">
+        <i class="fas fa-atom"></i>
+        <img src="css/images/eballot-logo.png" class="logo" width="200px", height="60px">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="/personal">Home</a></li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="/voters">Display</a></li>
+            <li><a href="/index">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+<h1 class="member"></h1>
+<div class="container" >
+    <form action="/voting" method="post" th:object="${requestVoting}">
+        <input class="textbox" type="text" name="voter_id" placeholder="Voter ID" required="">
+        <input class="textbox" type="text" name="Name" placeholder="Names" required="">
+        <input class="textbox" type="email" name="email" placeholder="Email address" required="">
+        <select class="textbox" name="gender" required="">
+            <option value="Gender">Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <input class="textbox" type="date" placeholder="Date of Birth" name="date" required="">
+        <input class="textbox" type="text" name="address" placeholder="Address" required="">
+        <select class="textbox" name="candidates" required="">
+            <option value="candidate">Candidates</option>
+            <option value="RPF">RPF</option>
+            <option value="Greenparty">Green Party</option>
+            <option value="psd">PSD</option>
+            <option value="pl">PL</option>
+        </select>
+        <input class="register" type="submit" name="submit" value="Submit">
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+<body>
+
+<div class="background"></div>
+
+<div class="container">
+    <h2>LOGIN</h2>
+    <form action="/login" method="post" th:object="${requestLogin}">
+
+        <div class="form-item">
+        <span class="material-icons-outlined">
+          account_circle
+        </span>
+            <input type="text" name="email" id="email" placeholder="E-mail">
+        </div>
+
+        <div class="form-item">
+        <span class="material-icons-outlined">
+          lock
+        </span>
+            <input type="password" name="password" id="password" placeholder="password">
+        </div>
+
+        <button type="submit">LOGIN</button>
+
+
+        <p>New User ? <a href="/SignUp"> Create an Account</a></p>
+
+    </form>
+</div>
+</body>
+</html>

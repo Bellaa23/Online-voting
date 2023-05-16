@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Display Page</title>
+    <style>
+
+        body
+        {
+            line-height: 1.6em;
+            background-image: linear-gradient(to top right, #C5C6D0, #373737);
+            background-size: cover;
+            min-height: 100vh;
+            /*margin: 0;*/
+        }
+
+        #box-table-a
+        {
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            font-size: 15px;
+            margin: 45px;
+            width: 1200px;
+            text-align: left;
+            border-collapse: collapse;
+        }
+        #box-table-a th
+        {
+            font-size: 18px;
+            font-weight: normal;
+            padding: 8px;
+            background: #b9c9fe;
+            border-top: 4px solid #aabcfe;
+            border-bottom: 1px solid #fff;
+            color: #039;
+        }
+        #box-table-a td
+        {
+            padding: 8px;
+            background: #e8edff;
+            border-bottom: 1px solid #fff;
+            color: #669;
+            border-top: 1px solid transparent;
+        }
+        #box-table-a tr:hover td
+        {
+            background: #d0dafd;
+            color: #339;
+        }
+
+        .box
+        {
+            margin-top: 20px;
+            margin-left: 40px;
+            top: 60%;
+            width: 900px;
+        }
+        input
+        {
+            position:auto;
+            font-size: 20px;
+            box-sizing: border-box;
+            transition: .5s;
+        }
+        input[type="text"]
+        {
+            font-family:sprint;
+            width: 340px;
+            height: 50px;
+            border:none;
+            outline:none;
+            padding: 25px 10px;
+            border-radius:  25px 25px 10px ;
+        }
+        input[type="submit"], input[type="button"]
+        {
+            position: auto;
+            left: -5px;
+            border-radius: 25px 25px 10px 0 ;
+            width: 150px;
+            height: 50px;
+            border: none;
+            outline: none;
+            cursor:pointer;
+            background:#d0dafd;
+            font-family:sprint;
+            margin-left: 20px;
+
+        }
+        input[type="submit"]:hover, input[type="button"]:hover{
+            background-color: #b9c9fe;
+
+        }
+
+    </style>
+</head>
+<body>
+<form th:action="@{/voters}">
+    <div class="box">
+    <input type = "text" id="keyword" name="keyword" size="50" th:value="${keyword}" placeholder="search">
+    <input type="submit" value="search" />
+    <input type="button" value="clear" id="btnClear" onclick="clearSearch()" />
+    </div>
+</form>
+<table class="table" id="box-table-a">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Voter_ID</th>
+        <th>Voter Names</th>
+        <th>E-mail</th>
+        <th>Gender</th>
+        <th>Date Of Birth</th>
+        <th>Address</th>
+        <th>Candidate</th>
+        <th>Action</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="voter: ${ListOfVoters}">
+       <tr>
+           <td th:text="${voter.id}"></td>
+           <td th:text="${voter.voter_id}"></td>
+           <td th:text="${voter.name}"></td>
+           <td th:text="${voter.email}"></td>
+           <td th:text="${voter.gender}"></td>
+           <td th:text="${voter.date}"></td>
+           <td th:text="${voter.address}"></td>
+           <td th:text="${voter.candidates}"></td>
+
+           <td class="odd">
+
+               <a th:href="@{/UpdateVoter/{id}(id=${voter.id})}"> Update </a>
+               <a th:href="@{/DeleteVoter/{id}(id=${voter.id})}"> Delete </a>
+           </td>
+       </tr>
+    </th:block>
+    </tbody>
+</table>
+</body>
+<script type="text/javascript">
+    function clearSearch(){
+        window.location = "[[@{/voters}]]";
+    }
+</script>
+</html>
